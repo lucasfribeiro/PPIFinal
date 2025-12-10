@@ -1,0 +1,24 @@
+{
+  "equipes": [
+    {
+      "nome": "Dragons",
+      "capitao": "Lucas",
+      "telefone": "14998864300"
+    },
+    {
+      "nome": "Elite",
+      "capitao": "Mariazinha",
+      "telefone": "14997452366"
+    }
+  ],
+  "jogadores": [
+    {
+      "nome": "Lucas",
+      "nickname": "lukinhabb",
+      "funcao": "atirador",
+      "elo": "Unranked",
+      "genero": "Masculino",
+      "equipe": "Elite"
+    }
+  ]
+}
