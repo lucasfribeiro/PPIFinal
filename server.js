@@ -82,7 +82,6 @@ function layout(content) {
     `;
 }
 
-// --- Página inicial (login) ---
 app.get("/", (req, res) => {
     res.send(layout(`
     <div class="row justify-content-center">
@@ -106,7 +105,6 @@ app.get("/", (req, res) => {
     `));
 });
 
-// --- Login ---
 app.post("/login", (req, res) => {
     const { usuario, senha } = req.body;
 
@@ -119,7 +117,6 @@ app.post("/login", (req, res) => {
     res.send(layout(`<h3>Usuário ou senha inválidos</h3><a href="/">Voltar</a>`));
 });
 
-// --- Home ---
 app.get("/home", autenticator, (req, res) => {
     const ultimo = req.cookies.acesso
         ? new Date(req.cookies.acesso).toLocaleString("pt-BR")
@@ -135,7 +132,6 @@ app.get("/home", autenticator, (req, res) => {
     `));
 });
 
-// --- Cadastro de Equipes ---
 app.get("/cadastro-equipe", autenticator, (req, res) => {
     const lista = data.equipes.map(e => `
         <li class="list-group-item bg-dark text-light">
@@ -180,7 +176,7 @@ app.post("/add-equipe", autenticator, (req, res) => {
     res.redirect("/cadastro-equipe");
 });
 
-// --- Cadastro de Jogadores ---
+
 app.get("/cadastro-jogador", autenticator, (req, res) => {
     const options = data.equipes.map(e => `<option>${e.nome}</option>`).join("");
 
@@ -282,12 +278,12 @@ app.post("/add-jogador", autenticator, (req, res) => {
     res.redirect("/cadastro-jogador");
 });
 
-// --- Logout ---
+
 app.get("/logout", (req, res) => {
     req.session.destroy();
     res.redirect("/");
 });
 
-// --- Servidor ---
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Rodando em http://localhost:" + PORT));
